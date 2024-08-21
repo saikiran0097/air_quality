@@ -1,0 +1,32 @@
+doctype html
+html
+  head
+    title Air Quality Data Results
+  body
+    h1 Air Quality Data Results
+
+    h2 Current Air Quality
+    table(border="1" cellpadding="5" cellspacing="0")
+      thead
+        tr
+          th Parameter
+          th Value
+      tbody
+        each value, key in data.current
+          tr
+            td= key
+            td= value
+
+    h2 Hourly Air Quality Data
+    table(border="1" cellpadding="5" cellspacing="0")
+      thead
+        tr
+          th Time
+          each param in Object.keys(data.hourly).slice(1)
+            th= param
+      tbody
+        each time, index in data.hourly.time
+          tr
+            td= time
+            each param in Object.keys(data.hourly).slice(1)
+              td= data.hourly[param][index]

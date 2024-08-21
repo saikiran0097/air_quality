@@ -1,0 +1,48 @@
+doctype html
+html
+  head
+    title Air Quality Data
+  body
+    h1 Air Quality Data Request
+    form(action="/air-quality" method="get")
+      div
+        label(for="latitude") Latitude:
+        input(type="text" id="latitude" name="latitude" required)
+
+      div
+        label(for="longitude") Longitude:
+        input(type="text" id="longitude" name="longitude" required)
+
+      div
+        label(for="timezone") Timezone:
+        select(id="timezone" name="timezone" required)
+          option(value="UTC") UTC
+          option(value="Europe/London") Europe/London
+          option(value="America/New_York") America/New_York
+          option(value="Asia/Tokyo") Asia/Tokyo
+          option(value="Australia/Sydney") Australia/Sydney
+
+      div
+        label(for="start_date") Start Date:
+        input(type="date" id="start_date" name="start_date" required)
+
+      div
+        label(for="end_date") End Date:
+        input(type="date" id="end_date" name="end_date" required)
+
+      div
+        button(type="submit") Get Air Quality Data
+
+//- if data
+//-   h2 Air Quality Data
+//-   table(border="1")
+//-     tr
+//-       th Date
+//-       each param in Object.keys(data)
+//-         th= param
+
+//-     each row, index in data[Object.keys(data)[0]]
+//-       tr
+//-         td= row
+//-         each param in Object.keys(data)
+//-           td= data[param][index]
